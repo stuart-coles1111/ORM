@@ -12,7 +12,7 @@
 #' @export
 #'
 totaltimeplot <- function(data){
-    ggplot2::ggplot(data = data,  ggplot2::aes(time1 + time2 , time2)) +
+    ggplot2::ggplot(data = data,  ggplot2::aes(time1, time1 + time2)) +
         ggplot2::geom_point( ggplot2::aes(color = race))  +
         ggplot2::xlab("First run time (secs)") +
         ggplot2::ylab("Total race time (secs)") +

@@ -70,6 +70,14 @@ gum_model6 = list(
     alpha = "alpha <- exp(beta[(n_races + 2) : (2 * n_races + 1) ])"
 ),
 
+gum_model7 = list(
+    type = "gumbel",
+    npar = "n_races + 2",
+    alpha_ind = "alpha_ind <- n_races + 2",
+    lambda1 = "lambda <-   beta[race_number] * df$bib1/30",
+    lambda2 = "lambda <-   beta[n_races+1] * beta[race_number] * df$bib2/30",
+    alpha = "alpha <- rep(exp(beta[alpha_ind]), n_races)"
+),
 
 
 exp_model0 = list(

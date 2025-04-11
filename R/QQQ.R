@@ -28,4 +28,3 @@ QQQ <- function(m, N, l, a) {
 }
 
 
-

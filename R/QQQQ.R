@@ -16,16 +16,16 @@
 #' @export
 #'
 QQQQ <- function(m, N, l, a) {
-    s <- EOR_p(1, l[1:2], a[1:2]) %>% log
-    if(m >= 2){
-        for(i in 2:m){
-            l <- l[-1]
-            a <- a[-1]
-            s <- s + EOR_p(1, l[1:2], a[1:2]) %>% log
+    s <- 0
+    for(i in 1:(m-1)){
+        for(j in (i+1):m){
+            s <- s + EOR_p(1, l[c(i,j)], a[c(i,j)]) %>% log
         }
     }
     s
 }
+
+
 
 
 

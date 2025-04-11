@@ -18,7 +18,7 @@
 #'
 QQ <- function(m, N, l, a, alpha) {
     s <- gum_mod_probs_log(l, a, alpha)[1]
-    if(m >=2){
+    if(m >= 2){
         for(i in 2:m){
             l <- l[-1]
             a <- a[-1]

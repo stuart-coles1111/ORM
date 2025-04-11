@@ -8,7 +8,7 @@
 
 #
 #'
-#' @returns win probabilities for each s
+#' @returns win probabilities for each element of k
 #' @examples
 #'   EOR_p(1:3)
 #'

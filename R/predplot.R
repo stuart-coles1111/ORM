@@ -11,13 +11,13 @@
 #' @param transform transfrom FIS points (TRUE/FALSE)
 
 #'
-#' @returns predictions
+#' @returns plot
 #' @examples
 #'   mod_fit <- fit("gum", 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
 #'   pred(ski_data, 7, mod_fit)
 #' @export
 #'
-pred <- function(race_df, race_number, fit_object, plot = TRUE, transform = TRUE){
+predplot <- function(race_df, race_number, fit_object, plot = TRUE, transform = TRUE){
 
     models <- get("models")
     model_name <- paste0(ifelse(fit_object$model_type == "gum", "gum_model", "exp_model"), fit_object$model_number)
@@ -57,8 +57,7 @@ pred <- function(race_df, race_number, fit_object, plot = TRUE, transform = TRUE
         p_plot <- ggplot2::ggplot(p_df, ggplot2::aes(diff, prob)) +
             ggplot2::geom_point(col='steelblue') +
             ggplot2::xlab('Time to leading racer (secs)') + ggplot2::ylab('Race Win Probability')
-        p_plot %>% print
     }
 
-    p_df
+    p_plot
 }

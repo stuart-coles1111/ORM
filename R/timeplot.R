@@ -22,4 +22,5 @@ timeplot <- function(data){
         ggplot2::theme(axis.text =  ggplot2::element_text(size = 10), axis.title =  ggplot2::element_text(size = 12)) +
         ggplot2::guides(shape =  ggplot2::guide_legend(override.aes = list(size = 1))) +
         ggplot2::theme(legend.title =  ggplot2::element_text(size = 8),  legend.text =  ggplot2::element_text(size = 8))
+
 }

@@ -7,6 +7,7 @@
 race_nllh(
   beta,
   model_type = "gum",
+  exp_approx = 0,
   model_number = 1,
   race_df,
   first_Run = TRUE,
@@ -21,6 +22,8 @@ race_nllh(
 \item{beta}{model parameters}
 
 \item{model_type}{model type "gum" for gumbel, "exp" for exponential}
+
+\item{exp_approx}{approximate exponential model? (0 - no, 1 or 2 for approx type)}
 
 \item{model_number}{as defined in object models}
 
@@ -45,6 +48,6 @@ neg log lik of specified model at given parameters
 Calculation of offset rank neg log lik for fitting to ski data
 }
 \examples{
-  race_nllh(c(.1,.2), "gum", 1, ski_data, allranks=FALSE, maxrank=15, first_Run = FALSE)
+  race_nllh(c(.1,.2), "gum", FALSE, 1, ski_data, allranks=FALSE, maxrank=15, first_Run = FALSE)
 
 }

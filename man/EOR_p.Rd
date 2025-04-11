@@ -14,7 +14,7 @@ EOR_p(k, l = c(2, 1, 3), a = c(0.5, 1, 2))
 \item{data}{k vector of individual indices}
 }
 \value{
-win probabilities for each s
+win probabilities for each element of k
 }
 \description{
 Calculation of win probabilities for each individual based on the EOR model

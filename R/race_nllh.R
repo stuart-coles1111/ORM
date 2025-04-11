@@ -4,6 +4,7 @@
 #'
 #' @param beta model parameters
 #' @param model_type model type "gum" for gumbel, "exp" for exponential
+#' @param exp_approx  approximate exponential model? (0 - no, 1 or 2 for approx type)
 #' @param model_number as defined in object models
 #' @param race_df dataframe of data
 #' @param first_Run model first run (TRUE/FALSE)
@@ -16,11 +17,11 @@
 #'
 #' @returns neg log lik of specified model at given parameters
 #' @examples
-#'   race_nllh(c(.1,.2), "gum", 1, ski_data, allranks=FALSE, maxrank=15, first_Run = FALSE)
+#'   race_nllh(c(.1,.2), "gum", FALSE, 1, ski_data, allranks=FALSE, maxrank=15, first_Run = FALSE)
 #'
 #' @export
 #'
-race_nllh <- function(beta, model_type = "gum", model_number = 1, race_df, first_Run=TRUE, second_Run=TRUE, allranks = TRUE, maxrank = 10, exclude_second_Run=NULL, print = FALSE){
+race_nllh <- function(beta, model_type = "gum", exp_approx = 0, model_number = 1, race_df, first_Run=TRUE, second_Run=TRUE, allranks = TRUE, maxrank = 10, exclude_second_Run=NULL, print = FALSE){
 
     models <- get("models")
     model_name <- paste0(ifelse(model_type == "gum", "gum_model", "exp_model"), model_number)
@@ -50,14 +51,26 @@ race_nllh <- function(beta, model_type = "gum", model_number = 1, race_df, first
 
             eval(parse(text = model$lambda1))
 
-
-            if(model$type == "gumbel")
+        if(model$type == "gumbel" &  exp_approx == 0)
             {
                 l1 <- l1 - QQ(m, nr, lambda, rep(0, nr), alpha[race_number])
             }
 
-            else{
+            if(model$type == "gumbel" &  exp_approx == 2)
+            {
+                l2 <- l2 - QG(m, nr, lambda, rep(0, nr), alpha[race_number])
+            }
+
+            else if(model$type == "exp" & exp_approx == 0) {
                 l1 <- l1 - log(Q(m, nr, lambda, rep(0, nr)))
+            }
+
+            else if(model$type == "exp" & exp_approx == 1) {
+                l1 <- l1 - QQQ(m, nr, lambda, rep(0, nr))
+            }
+
+            else if(model$type == "exp" & exp_approx == 2) {
+                l1 <- l1 - QQQQ(m, nr, lambda, rep(0, nr))
             }
         }
     }
@@ -82,21 +95,34 @@ race_nllh <- function(beta, model_type = "gum", model_number = 1, race_df, first
 
             df <- subset(race_df, race == races[race_number])
             df <- dplyr::arrange(df, position) #arrange by final position
+
             nr <- nrow(df)
 
             m <- ifelse(allranks, nr, min(maxrank, nr - 1))
 
             eval(parse(text = model$lambda2))
 
-            if(model$type == "gumbel")
+            if(model$type == "gumbel" &  exp_approx == 0)
             {
                 l2 <- l2 - QQ(m, nr, lambda, df$time1, alpha[race_number])
             }
 
-            else{
+            if(model$type == "gumbel" &  exp_approx == 2)
+            {
+                l2 <- l2 - QG(m, nr, lambda, df$time1, alpha[race_number])
+            }
+
+            else if(model$type == "exp" & exp_approx == 0) {
                 l2 <- l2 - log(Q(m, nr, lambda, df$time1))
             }
 
+            else if(model$type == "exp" & exp_approx == 1) {
+                l2 <- l2 - QQQ(m, nr, lambda, df$time1)
+            }
+
+            else if(model$type == "exp" & exp_approx == 2) {
+                l2 <- l2 - QQQQ(m, nr, lambda, df$time1)
+            }
         }
     }
 

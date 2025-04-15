@@ -15,4 +15,7 @@ RoxygenNote: 7.3.2
 Imports: 
     ggplot2,
     dplyr,
-    magrittr
+    magrittr,
+    grid,
+    gridExtra,
+    ggrepel,

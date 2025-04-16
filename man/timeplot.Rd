@@ -4,10 +4,24 @@
 \alias{timeplot}
 \title{Plots ski data run times}
 \usage{
-timeplot(data)
+timeplot(
+  data,
+  point_size = 2,
+  axis_label_size = 12,
+  axis_title_size = 15,
+  legend_text_size = 12
+)
 }
 \arguments{
 \item{data}{dataframe containing data}
+
+\item{point_size}{point size}
+
+\item{axis_label_size}{axis label size}
+
+\item{axis_title_size}{axis title size}
+
+\item{legend_text_size}{legend text size}
 }
 \value{
 plot of data

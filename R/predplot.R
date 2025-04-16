@@ -1,23 +1,22 @@
-#' PredictionEOR and GOR models
+#' Prediction plots
 #'
-#' Predictionof EOR and GOR models
+#' Prediction plots
 #'
-#' @param race_df dataframe of data
-#' @param race_number race number to predict
-#' @param beta fitted parameters
-#' @param gum_model is model gumbel (TRUE/FALSE)
-#' @param model_number as defined in object models
-#' @param plot plot results (TRUE/FALSE)
-#' @param transform transfrom FIS points (TRUE/FALSE)
-
+#' @param data dataframe containing data
+#' @param point_size point size
+#' @param axis_label_size axis label size
+#' @param axis_title_size axis title size
+#' @param legend_text_size legend text size
+#
 #'
-#' @returns plot
+#' @returns plot of data
 #' @examples
 #'   mod_fit <- fit("gum", 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
-#'   pred(ski_data, 7, mod_fit)
+#'   pred(ski_data, 7, mod_fit)#'
 #' @export
 #'
-predplot <- function(race_df, race_number, fit_object, plot = TRUE, transform = TRUE){
+
+predplot <- function(race_df, race_number, fit_object, plot = TRUE, transform = TRUE, point_size = 2, axis_label_size = 12, axis_title_size = 15, legend_text_size = 12){
 
     models <- get("models")
     model_name <- paste0(ifelse(fit_object$model_type == "gum", "gum_model", "exp_model"), fit_object$model_number)
@@ -55,9 +54,11 @@ predplot <- function(race_df, race_number, fit_object, plot = TRUE, transform = 
 
     if(plot == TRUE){
         p_plot <- ggplot2::ggplot(p_df, ggplot2::aes(diff, prob)) +
-            ggplot2::geom_point(col='steelblue') +
+            ggplot2::geom_point(col='steelblue', size = point_size) +
+            ggplot2::theme(axis.text =  ggplot2::element_text(size = axis_label_size), axis.title =  ggplot2::element_text(size = axis_title_size)) +
             ggplot2::xlab('Time to leading racer (secs)') + ggplot2::ylab('Race Win Probability')
     }
-
-    p_plot
+    return(p_plot)
 }
+
+

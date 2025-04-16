@@ -48,7 +48,7 @@ pred <- function(race_df, race_number, fit_object, plot = TRUE, transform = TRUE
 
         pr <- EOR_p(1:nr, lambda, df$time1)
 
-    p_df <- data.frame(surname=df$surname, bib=df$bib2, Run1_pos=df$rank1, points=df$points, prob=pr, time1=df$time1)
+    p_df <- data.frame(surname=df$surname, bib=df$bib2, Run1_pos=df$rank1, points=df$points, prob=pr, time1=df$time1, position = df$position)
     p_df$diff <- p_df$time1 - min(p_df$time1)
 
 

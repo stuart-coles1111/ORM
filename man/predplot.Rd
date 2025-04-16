@@ -2,32 +2,38 @@
 % Please edit documentation in R/predplot.R
 \name{predplot}
 \alias{predplot}
-\title{PredictionEOR and GOR models}
+\title{Prediction plots}
 \usage{
-predplot(race_df, race_number, fit_object, plot = TRUE, transform = TRUE)
+predplot(
+  race_df,
+  race_number,
+  fit_object,
+  plot = TRUE,
+  transform = TRUE,
+  point_size = 2,
+  axis_label_size = 12,
+  axis_title_size = 15,
+  legend_text_size = 12
+)
 }
 \arguments{
-\item{race_df}{dataframe of data}
+\item{point_size}{point size}
 
-\item{race_number}{race number to predict}
+\item{axis_label_size}{axis label size}
 
-\item{plot}{plot results (TRUE/FALSE)}
+\item{axis_title_size}{axis title size}
 
-\item{transform}{transfrom FIS points (TRUE/FALSE)}
+\item{legend_text_size}{legend text size}
 
-\item{beta}{fitted parameters}
-
-\item{gum_model}{is model gumbel (TRUE/FALSE)}
-
-\item{model_number}{as defined in object models}
+\item{data}{dataframe containing data}
 }
 \value{
-plot
+plot of data
 }
 \description{
-Predictionof EOR and GOR models
+Prediction plots
 }
 \examples{
   mod_fit <- fit("gum", 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
-  pred(ski_data, 7, mod_fit)
+  pred(ski_data, 7, mod_fit)#'
 }

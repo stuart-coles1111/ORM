@@ -7,7 +7,8 @@
 figplot(
   fig_number,
   save = FALSE,
-  file_path = "~/slalom_rank/new submission/figs/"
+  file_path = "~/slalom_rank/new submission/figs/",
+  text_size = 5
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ figplot(
 \item{save}{TRUE/FALSE? save figure to file?}
 
 \item{file_path}{path to save file if required}
+
+\item{text_size}{text size for labels}
 }
 \value{
 empty but plots figure

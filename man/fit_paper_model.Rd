@@ -4,12 +4,14 @@
 \alias{fit_paper_model}
 \title{Fit models with defaults from paper}
 \usage{
-fit_paper_model(model_number, model_type)
+fit_paper_model(model_number, model_type, print = FALSE)
 }
 \arguments{
 \item{model_number}{as defined in object models}
 
 \item{model_type}{model type "gum" for gumbel, "exp" for exponential}
+
+\item{print}{print loglik at each iteration? (TRUE/FALSE)}
 }
 \value{
 fitted model
@@ -19,6 +21,6 @@ Wrapper to fit models with defaults from paper
 }
 \examples{
   fit_paper_model(model_number = 5, model_type = "gum")
-  fit_paper_model(model_number = 0, model_type = "exp")
+  fit_paper_model(model_number = 0, model_type = "exp", print = TRUE) # note: all exponential models are slow to fit
 
 }

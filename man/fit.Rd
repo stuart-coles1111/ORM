@@ -6,7 +6,7 @@
 \usage{
 fit(
   model_type = "gum",
-  exp_approx = 0,
+  approx = 0,
   model_number = 1,
   race_df = ski_data,
   first_Run = TRUE,
@@ -24,7 +24,7 @@ fit(
 \arguments{
 \item{model_type}{model type "gum" for gumbel, "exp" for exponential}
 
-\item{exp_approx}{(TRUE/FALSE) approximate exponential model?}
+\item{approx}{approximate likelihood? (0 = no; 1 or 2 for approximation type)}
 
 \item{model_number}{as defined in object models}
 
@@ -57,6 +57,6 @@ fitted model
 Fit of EOR and GOR models
 }
 \examples{
-  fit(model_type = "gum", exp_approx = 0, model_number = 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
+  fit(model_type = "gum", approx = 0, model_number = 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
 
 }

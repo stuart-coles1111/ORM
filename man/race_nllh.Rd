@@ -7,7 +7,7 @@
 race_nllh(
   beta,
   model_type = "gum",
-  exp_approx = 0,
+  approx = 0,
   model_number = 1,
   race_df,
   first_Run = TRUE,
@@ -23,7 +23,7 @@ race_nllh(
 
 \item{model_type}{model type "gum" for gumbel, "exp" for exponential}
 
-\item{exp_approx}{approximate exponential model? (0 - no, 1 or 2 for approx type)}
+\item{approx}{approximate likelihood? (0 - no, 1 or 2 for approx type)}
 
 \item{model_number}{as defined in object models}
 

@@ -572,9 +572,9 @@ sim <- function(nrep = 1, nrace = 1, nracers = 30, sim_model = "gumbel", model =
     outval <- c()
 
     for(i in 1:nrep) {
-
+        cat(i, fill=T)
         points <- runif(nracers, 0, 10)
-
+        points <- sample(ff, nracers)
         if(sim_model == "gumbel"){
             df <-  g_all_race_sim(nrace=nrace, nracers=nracers, points = points, order1=order1,order2=order2, alpha = alpha, beta=beta,gamma = gamma)
             true_pars <- c(beta, gamma, log(alpha))
@@ -584,17 +584,17 @@ sim <- function(nrep = 1, nrace = 1, nracers = 30, sim_model = "gumbel", model =
             true_pars <- c(e_mu, e_beta, e_gamma)
         }
 
-
         if(sim_model=="gumbel")
-            out <- fit(paste0("gum_model", model) %>% get, df, allranks=allranks,maxrank=maxrank, first_Run=first_Run, second_Run=second_Run, init=init)
+            out <- fit(model_type = "gum", approx = 0, model_number = model, race_df = df,allranks=allranks,maxrank=maxrank, first_Run=first_Run, second_Run=second_Run, init=init, transform = FALSE)
+          #  out <- fit(paste0("gum_model", model) %>% get, df, allranks=allranks,maxrank=maxrank, first_Run=first_Run, second_Run=second_Run, init=init)
         else
-            out<- fit(paste0("exp_model", model) %>% get, df, allranks=allranks,maxrank=maxrank, first_Run=first_Run, second_Run=second_Run,init=init)
+            out<- fit(paste0("exp_model", model) %>% get, df, allranks=allranks,maxrank=maxrank, first_Run=first_Run, second_Run=second_Run,init=init, transform = FALSE)
 
         outmat <- rbind(outmat, out$par)
         outval <- c(outval, out$opt$value)
 
     }
-    #    browser()
+
     list(true_pars, outmat, outval, apply(outmat,2,mean), apply(outmat,2,sd))
 
 }

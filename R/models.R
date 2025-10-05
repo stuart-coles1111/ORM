@@ -79,7 +79,41 @@ gum_model7 = list(
     alpha = "alpha <- rep(exp(beta[alpha_ind]), n_races)"
 ),
 
+gum_model8 = list(
+    type = "gumbel",
+    npar = 4,
+    alpha_ind = "alpha_ind <- 4",
+    lambda1 = "lambda <-   beta[1] * df$ind1 + beta[2] * df$ind2 + beta[3] * df$bib1/30",
+    lambda2 = "lambda <-   beta[1] * df$ind1 + beta[2] * df$ind2 + beta[3] * df$bib2/30",
+    alpha = "alpha <- rep(exp(beta[alpha_ind]), n_races)"
+),
 
+gum_model9 = list(
+    type = "gumbel",
+    npar = 1,
+    alpha_ind = "alpha_ind <- 1",
+    lambda1 = "lambda <-  beta[1] * df$points",
+    lambda2 = "lambda <-  beta[1] * df$points",
+    alpha = "alpha <- rep(1, n_races)"
+),
+
+gum_model10 = list(
+    type = "gumbel",
+    npar = 1,
+    alpha_ind = "alpha_ind <- 1",
+    lambda1 = "lambda <-    beta[1] * df$bib1/30",
+    lambda2 = "lambda <-    beta[1] * df$bib2/30",
+    alpha = "alpha <- rep(1, n_races)"
+),
+
+gum_model11 = list(
+    type = "gumbel",
+    npar = 2,
+    alpha_ind = "alpha_ind <- 1",
+    lambda1 = "lambda <-   beta[1] * df$points  + beta[2] * df$bib1/30",
+    lambda2 = "lambda <-   beta[1] * df$points  + beta[2] * df$bib2/30",
+    alpha = "alpha <- rep(1, n_races)"
+),
 exp_model0 = list(
     type = "exp",
     npar = 1,

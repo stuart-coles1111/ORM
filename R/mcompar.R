@@ -37,6 +37,10 @@ p1 <- ggplot2::ggplot(data = fits,  ggplot2::aes(x = V1, y = V8) ) +  ggplot2::g
 fits$upper <- fits$V12 + 1.96 * fits$V23
 fits$lower <- fits$V12 - 1.96 * fits$V23
 
+fits$V12 <- exp(fits$V12)
+fits$upper <- exp(fits$upper)
+fits$lower <- exp(fits$lower)
+
 p2 <- ggplot2::ggplot(data = fits, ggplot2::aes(x = V1, y = V12) ) +
     ggplot2::geom_line(color="steelblue") + ggplot2::geom_ribbon(ggplot2::aes(ymin = lower, ymax = upper), alpha=0.2) +
     ggplot2::theme(axis.text =  ggplot2::element_text(size = axis_label_size), axis.title =  ggplot2::element_text(size = axis_title_size)) +

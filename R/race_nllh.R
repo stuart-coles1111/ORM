@@ -58,7 +58,7 @@ race_nllh <- function(beta, model_type = "gum", approx = 0, model_number = 1, ra
 
             if(model$type == "gumbel" &  approx == 2)
             {
-                l2 <- l2 - QG(m, nr, lambda, rep(0, nr), alpha[race_number])
+                l1 <- l1 - QG(m, nr, lambda, rep(0, nr), alpha[race_number])
             }
 
             else if(model$type == "exp" & approx == 0) {

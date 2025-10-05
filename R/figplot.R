@@ -113,7 +113,7 @@ figplot <- function(fig_number, save = FALSE, file_path = '~/slalom_rank/new sub
 
 
     if(save){
-        ggplot2::ggsave(file = paste0(file_path,"fig", fig_number,".jpeg"), sp)
+        ggplot2::ggsave(file = paste0(file_path,"fig", fig_number,".pdf"), sp)
     }
     return()
 }

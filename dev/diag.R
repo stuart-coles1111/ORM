@@ -16,3 +16,9 @@ for(i in 1:10){
     preds_df <- data.frame(race_number = i, rank1 = preds$Run1_pos, prob = preds$prob, rank2 = nrow(preds) - rank(preds$prob) +1, position = preds$position)
     exp_preds <- rbind(exp_preds, preds_df)
 }
+
+cor(gum_preds$rank2,gum_preds$position)
+[1] 0.6822767
+
+> cor(ski_data$position,ski_data$rank1)
+[1] 0.6389551

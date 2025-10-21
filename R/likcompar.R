@@ -16,23 +16,6 @@
 #' @export
 #'
 
-#' Compares exact and approx lik fits
-#'
-#' Compares exact and approx lik fits
-#'
-#' @param data data
-#' @param point_size point size
-#' @param axis_label_size axis label size
-#' @param axis_title_size axis title size
-#' @param legend_text_size legend text size
-#
-#'
-#' @returns plot of data
-#' @examples
-#' likcompar(ski_data)
-#'
-#' @export
-#'
 
 
 likcompar <- function(data, point_size = 2, axis_label_size = 12, axis_title_size = 15, legend_text_size = 12){

@@ -856,3 +856,28 @@ rsim_e_real <- function(nrep = 1, nrace = 1, nracers = 30, race_number = 7, mode
     }
 
 }
+
+
+
+g_race_sim <- function(nracers = 30, points = fis_points, alpha=.5, beta = 5, gamma= 0, order1 = TRUE, order2 = TRUE){
+
+    df <- data.frame(racer=1:nracers, points=points)
+    if(order1) {
+        df <- arrange(df, points)
+    }
+    df$bib1 <- 1:nracers
+    df$time1 <- alpha*log(rexp(nracers,1)) + beta*df$points + gamma * df$bib1 / nracers
+
+    if(order2){
+        df <- arrange(df, desc(time1))
+        df$bib2 <- 1:nracers
+    }
+    else{
+        df$bib2 <- sample(1:nracers, nracers,replace=FALSE)
+    }
+
+    df$time2 <- alpha*log(rexp(nracers,1)) + beta*df$points + gamma * df$bib2 / nracers
+    df$total_time <- df$time1+df$time2
+    df$position <- rank(df$total_time)
+    arrange(df,position)
+}

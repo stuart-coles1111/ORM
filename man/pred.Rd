@@ -28,6 +28,6 @@ predictions
 Predictionof EOR and GOR models
 }
 \examples{
-  mod_fit <- fit("gum", 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
+  mod_fit <- fit("gum", 0, 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
   pred(ski_data, 7, mod_fit)
 }

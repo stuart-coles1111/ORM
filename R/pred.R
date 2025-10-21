@@ -13,7 +13,7 @@
 #'
 #' @returns predictions
 #' @examples
-#'   mod_fit <- fit("gum", 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
+#'   mod_fit <- fit("gum", 0, 5, ski_data,first_Run =FALSE, allranks=FALSE, maxrank=15, if_hessian=FALSE, init=0.1, method="BFGS", print=FALSE)
 #'   pred(ski_data, 7, mod_fit)
 #' @export
 #'
@@ -23,7 +23,7 @@ pred <- function(race_df, race_number, fit_object, plot = TRUE, transform = TRUE
     model_name <- paste0(ifelse(fit_object$model_type == "gum", "gum_model", "exp_model"), fit_object$model_number)
     model <- models[[model_name]]
 
-    beta <- fit_object$opt$par
+    beta <- fit_object$par
 
     if(transform) race_df$points <- log(race_df$points + 1)
 

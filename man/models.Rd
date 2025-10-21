@@ -5,7 +5,7 @@
 \alias{models}
 \title{Model definitions}
 \format{
-An object of class \code{list} of length 15.
+An object of class \code{list} of length 20.
 }
 \usage{
 models

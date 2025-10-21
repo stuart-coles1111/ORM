@@ -114,6 +114,16 @@ gum_model11 = list(
     lambda2 = "lambda <-   beta[1] * df$points  + beta[2] * df$bib2/30",
     alpha = "alpha <- rep(1, n_races)"
 ),
+
+gum_model12 = list(
+    type = "gumbel",
+    npar = 2,
+    alpha_ind = "alpha_ind <- 2",
+    lambda1 = "lambda <-    exp(beta[1]) * df$bib1/30",
+    lambda2 = "lambda <-    exp(beta[1]) * df$bib2/30",
+    alpha = "alpha <- rep(exp(beta[alpha_ind]), n_races)"
+),
+
 exp_model0 = list(
     type = "exp",
     npar = 1,
